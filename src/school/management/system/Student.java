@@ -58,6 +58,12 @@ public class Student {
 		this.feesTotal = feedTotal;
 	}
 	
+	public void payFees(BigDecimal fees) {
+		BigDecimal sum = feesPaid.add(fees);
+		this.setFeesPaid(sum);
+		School.updateTotalMoneyEarned(sum);
+	}
+	
 	public void updateFeesPaid(BigDecimal fees) {
 		BigDecimal total = this.getFeesPaid();
 		total.add(fees);

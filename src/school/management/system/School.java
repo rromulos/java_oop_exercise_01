@@ -7,10 +7,10 @@ public class School {
 	
 	private List<Teacher> teachers;
 	private List<Student> students;
-	private BigDecimal totalMoneyEarned;
-	private BigDecimal totalMoneySpent;
+	private static BigDecimal totalMoneyEarned;
+	private static BigDecimal totalMoneySpent;
 	
-	public School(List<Teacher> teachers, List<Student> students, BigDecimal totalMoneyEarned, BigDecimal totalMoneySpent) {
+	public School(List<Teacher> teachers, List<Student> students) {
         this.teachers = teachers;
         this.students = students;
         totalMoneyEarned = new BigDecimal(0);
@@ -33,20 +33,22 @@ public class School {
 		students.add(student);
 	}
 	
-	public BigDecimal getTotalMoneyEarned() {
+	public static BigDecimal getTotalMoneyEarned() {
 		return totalMoneyEarned;
 	}
 	
-	public void updateTotalMoneyEarned(BigDecimal totalMoneyEarned) {
-		totalMoneyEarned.add(totalMoneyEarned);
+	public static void updateTotalMoneyEarned(BigDecimal earned) {
+		BigDecimal sum = totalMoneyEarned.add(earned);
+		totalMoneyEarned = sum;
 	}
 	
-	public BigDecimal getTotalMoneySpent() {
+	public static BigDecimal getTotalMoneySpent() {
 		return totalMoneySpent;
 	}
 	
-	public void updateTotalMoneySpent(BigDecimal totalMoneySpent) {
-		totalMoneyEarned.subtract(totalMoneySpent);
+	public static void updateTotalMoneySpent(BigDecimal totalMoneySpent) {
+		BigDecimal subtract = totalMoneyEarned.subtract(totalMoneySpent);
+		totalMoneyEarned = subtract;
 	}
 }
 

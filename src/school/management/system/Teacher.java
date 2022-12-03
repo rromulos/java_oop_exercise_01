@@ -7,11 +7,13 @@ public class Teacher {
 	private int id;
 	private String name;
 	private BigDecimal salary;
+	private BigDecimal salaryEarned;
 	
 	public Teacher(int id, String name, BigDecimal salary) {
-		this.setId(id);
-		this.setName(name);
-		this.setSalary(salary);
+        this.id = id;
+        this.name = name;
+        this.salary = salary;
+        this.salaryEarned = new BigDecimal(0);
 	}
 	
 	public int getId() {
@@ -32,6 +34,11 @@ public class Teacher {
 	public void setSalary(BigDecimal salary) {
 		this.salary = salary;
 	}
+	
+    public void receiveSalary(BigDecimal salary){
+        BigDecimal sum = salaryEarned.add(salary);
+        School.updateTotalMoneySpent(sum);
+    }
 	
 	
 }
